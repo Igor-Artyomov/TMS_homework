@@ -1,0 +1,86 @@
+CREATE TABLE students(
+    id INTEGER PRIMARY KEY,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    group_number TEXT NOT NULL,
+    course TEXT NOT NULL,
+    age INTEGER NOT NULL,
+    gender TEXT NOT NULL,
+    city TEXT NOT NULL
+);
+
+
+
+CREATE TABLE classrooms(
+    id INTEGER PRIMARY KEY,
+    number INTEGER NOT NULL,
+    stage INTEGER NOT NULL,
+    capacity INTEGER NOT NULL,
+    building TEXT NOT NULL,
+    course TEXT NOT NULL,
+    student_id INTEGER NOT NULL,
+    
+    FOREIGN KEY (student_id) REFERENCES students(id)
+);
+
+
+
+INSERT INTO students(
+    first_name, last_name, group_number,
+    course, age, gender, city
+) VALUES ("Max", "Lind", "A-254", "Python developer", 25, "M", "Oslo");
+
+
+INSERT INTO students(
+    first_name, last_name, group_number,
+    course, age, gender, city
+) VALUES ("Jane", "Higgins", "A-228", "Python developer", 24, "F", "London");
+
+
+INSERT INTO students(
+    first_name, last_name, group_number,
+    course, age, gender, city
+) VALUES ("Nick", "Smith", "B-123", "Python developer", 22, "M", "Chicago");
+
+
+INSERT INTO students(
+    first_name, last_name, group_number,
+    course, age, gender, city
+) VALUES ("Paolo", "Linetti", "A-220", "Python developer", 23, "M", "Pisa");
+
+
+INSERT INTO students(
+    first_name, last_name, group_number,
+    course, age, gender, city
+) VALUES ("Mark", "Gunter", "S-025", "Python developer", 24, "M", "Berlin");
+
+
+
+INSERT INTO classrooms(
+    number, stage, capacity,
+    building, course, student_id
+) VALUES (125, 1, 35, "Corp A", "Python Developer", 2);
+
+
+INSERT INTO classrooms(
+    number, stage, capacity,
+    building, course, student_id
+) VALUES (216, 2, 25, "Corp C", "Math", 1);
+
+
+INSERT INTO classrooms(
+    number, stage, capacity,
+    building, course, student_id
+) VALUES (313, 3, 120, "Corp A", "English", 4);
+
+
+INSERT INTO classrooms(
+    number, stage, capacity,
+    building, course, student_id
+) VALUES (116, 1, 30, "Corp A", "Python Developer", 5);
+
+
+INSERT INTO classrooms(
+    number, stage, capacity,
+    building, course, student_id
+) VALUES (401, 4, 140, "Corp B", "English", 3);
