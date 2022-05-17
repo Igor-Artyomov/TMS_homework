@@ -1,0 +1,70 @@
+CREATE TABLE librarian(
+ id INTEGER PRIMARY KEY,
+ login TEXT NOT NULL,
+ password TEXT NOT NULL
+);
+
+
+CREATE TABLE administrator(
+ id INTEGER PRIMARY KEY,
+ login TEXT NOT NULL,
+ password TEXT NOT NULL
+);
+
+
+CREATE TABLE reading_room(
+ id INTEGER PRIMARY KEY,
+ name TEXT NOT NULL
+);
+
+
+CREATE TABLE reader(
+ id INTEGER PRIMARY KEY,
+ name TEXT NOT NULL,
+ passport_number TEXT NOT NULL,
+ adress TEXT NOT NULL,
+ phone_number INTEGER NOT NULL
+);
+
+
+CREATE TABLE book(
+ id INTEGER PRIMARY KEY,
+ isbn INTEGER NOT NULL,
+ name TEXT NOT NULL,
+ author TEXT NOT NULL,
+ year INTEGER NOT NULL,
+ publisher TEXT NOT NULL
+);
+
+
+CREATE TABLE book_placement(
+ id INTEGER PRIMARY KEY,
+ book_id INTEGER,
+ reading_room_id INTEGER,
+ number_of_books INTEGER NOT NULL,
+ shelf_number INTEGER NOT NULL,
+ CONSTRAINT fk_book_id_1 FOREIGN KEY (book_id) REFERENCES book (id),
+ CONSTRAINT fk_reading_room FOREIGN KEY (reading_room_id) REFERENCES reading_room (id)
+);
+
+
+CREATE TABLE book_output_card(
+ id INTEGER PRIMARY KEY,
+ book_id INTEGER,
+ reader_id INTEGER,
+ time INTEGER NOT NULL,
+ term INTEGER NOT NULL,
+ CONSTRAINT fk_book_id_2 FOREIGN KEY (book_id) REFERENCES book (id),
+ CONSTRAINT fk_reader_id_1 FOREIGN KEY (reader_id) REFERENCES reader (id)
+);
+
+
+CREATE TABLE book_booking_card(
+ id INTEGER PRIMARY KEY,
+ book_id INTEGER,
+ reader_id INTEGER,
+ time INTEGER NOT NULL,
+ CONSTRAINT fk_book_id_3 FOREIGN KEY (book_id) REFERENCES book (id),
+ CONSTRAINT fk_reader_id_2 FOREIGN KEY (reader_id) REFERENCES reader (id)
+);
+
